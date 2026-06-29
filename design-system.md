@@ -185,25 +185,162 @@ Structure : `Logo | Accueil | Réseau | Emplois | Messages | Notifications`
 
 ## 7. Iconographie
 
-**Librairie** : Tabler Icons (outline uniquement)  
-**Taille standard** : 20px dans la nav, 16px inline  
-**Couleur** : hérite du contexte parent
+**Librairie unique** : [Tabler Icons](https://tabler.io/icons) — variante **outline** exclusivement.  
+**Jamais d'emoji** — les emoji sont interdits dans l'interface (rendu incohérent selon l'OS, non accessible, non scalable). Utiliser systématiquement une icône Tabler à la place.
 
-Icônes clés LinkedIn :
-- `ti-home` — Accueil
-- `ti-users` — Réseau
-- `ti-briefcase` — Emplois
-- `ti-message-circle` — Messages
-- `ti-bell` — Notifications
-- `ti-user-plus` — Se connecter
-- `ti-send` — Message direct
-- `ti-thumb-up` — J'aime
-- `ti-share` — Partager
-- `ti-search` — Recherche
+### Tailles
+
+| Contexte | Taille | Épaisseur de trait |
+| -------- | ------ | ------------------ |
+| Navigation principale | 24px | 1.5px |
+| Actions inline (boutons, champs) | 20px | 1.5px |
+| Indicateurs compacts (badges, tags) | 16px | 1.5px |
+
+### Couleur
+
+- Hérite toujours de la couleur du texte parent (`currentColor`).
+- Sur fond coloré : blanc `#ffffff`.
+- Icône active / sélectionnée : `#0a66c2`.
+- Icône désactivée : `#b0b0b0`.
+
+### Icônes de référence
+
+| Icône Tabler | Usage |
+| ------------ | ----- |
+| `ti-home` | Accueil |
+| `ti-users` | Réseau |
+| `ti-briefcase` | Emplois |
+| `ti-message-circle` | Messages |
+| `ti-bell` | Notifications |
+| `ti-user-plus` | Se connecter / Suivre |
+| `ti-send` | Message direct |
+| `ti-thumb-up` | J'aime |
+| `ti-share` | Partager |
+| `ti-search` | Recherche |
+| `ti-eye` / `ti-eye-off` | Afficher / masquer mot de passe |
+| `ti-chevron-right` | Navigation, liens |
+| `ti-x` | Fermer, effacer |
+| `ti-check` | Confirmation, succès |
+| `ti-alert-circle` | Erreur, avertissement |
+| `ti-info-circle` | Information |
+| `ti-photo` | Photo de profil / bannière |
+| `ti-edit` | Modifier |
+| `ti-dots` | Menu contextuel (3 points) |
 
 ---
 
-## 7. Règles de design
+## 8. Champs de formulaire
+
+Tous les champs du produit suivent une grammaire visuelle unique. Ne pas inventer de variantes locales.
+
+### Anatomie d'un champ
+
+```text
+[Label — 13px / 600]
+┌─────────────────────────────────┐
+│  [icône 20px]   Valeur / Placeholder          │
+└─────────────────────────────────┘
+[Message d'aide ou d'erreur — 12px]
+```
+
+- Le **label** est toujours au-dessus du champ, jamais à l'intérieur (pas de floating label).
+- L'**icône** est optionnelle, alignée à gauche avec `padding-left: 36px` si présente.
+- Le **message** apparaît uniquement en état erreur ou aide contextuelle.
+
+### Dimensions
+
+| Propriété | Valeur |
+| --------- | ------ |
+| Hauteur | 48px |
+| Padding horizontal | 12px (16px si icône) |
+| Border-radius | 4px |
+| Font-size valeur | 15px / 400 |
+| Font-size label | 13px / 600 |
+| Font-size message | 12px / 400 |
+
+### États
+
+| État | Bordure | Fond | Texte |
+| ---- | ------- | ---- | ----- |
+| Default | `1.5px solid #e0e0e0` | `#ffffff` | `#1a1a1a` |
+| Focus | `1.5px solid #0a66c2` | `#ffffff` | `#1a1a1a` |
+| Erreur | `1.5px solid #cc1016` | `#fff5f5` | `#1a1a1a` |
+| Désactivé | `1px solid #e0e0e0` | `#f3f2ef` | `#b0b0b0` |
+| Placeholder | — | — | `#999999` |
+
+### Icônes dans les champs
+
+- Utiliser exclusivement des icônes **Tabler outline** — jamais d'emoji.
+- Taille fixe : **20px**, couleur `#666666` par défaut, `#0a66c2` au focus.
+- Icône de mot de passe : `ti-eye` / `ti-eye-off` cliquable à droite du champ.
+- Icône de recherche : `ti-search` à gauche, non cliquable.
+
+### Règles générales
+
+1. Un seul type de champ par formulaire — ne pas mélanger les styles.
+2. Espacement entre deux champs : `16px` (token `--space-lg`).
+3. Le label et le champ sont toujours groupés dans un même conteneur vertical.
+4. Les champs obligatoires n'ont pas d'astérisque — la validation se fait à la soumission avec message d'erreur explicite.
+
+---
+
+## 9. Images & Avatars
+
+Toutes les images sont contenues dans une **boîte image simple** — un frame avec `overflow: hidden` et un fond placeholder neutre. Jamais d'image posée directement sur le canvas sans conteneur.
+
+### Avatar utilisateur
+
+| Taille | Contexte | Forme |
+| ------ | -------- | ----- |
+| 44px | Carte post, commentaires | Cercle (`border-radius: 50%`) |
+| 56px | Carte profil | Cercle |
+| 32px | Notifications, suggestions | Cercle |
+
+**Placeholder** : fond `#e0e0e0`, icône `ti-user` centrée en `#aaaaaa`, bordure `1px solid #d0d0d0`.  
+**Image réelle** : `object-fit: cover`, même conteneur circulaire.  
+**Bordure sur fond coloré** : `3px solid #ffffff` pour détacher l'avatar de la bannière.
+
+### Image de post / média
+
+| Propriété | Valeur |
+| --------- | ------ |
+| Ratio | 16:9 (paysage) ou 1:1 (carré) |
+| Border-radius | `8px` |
+| Object-fit | `cover` |
+| Placeholder | Fond `#f3f2ef`, icône `ti-photo` centrée en `#b0b0b0` |
+
+### Bannière de profil
+
+| Propriété | Valeur |
+| --------- | ------ |
+| Hauteur | 56px (mobile), 96px (desktop) |
+| Object-fit | `cover` |
+| Placeholder | Fond `#0a66c2` (bleu LinkedIn) |
+
+### Bibliothèques d'images recommandées
+
+Pour les maquettes et prototypes, utiliser des photos réelles issues de ces sources :
+
+| Source | Usage | URL |
+| ------ | ----- | --- |
+| **RandomUser.me** | Avatars / portraits réalistes | `https://randomuser.me/api/portraits/women/{n}.jpg` |
+| **Unsplash** | Photos de contenu, bannières | `https://unsplash.com` |
+| **UI Faces** | Avatars diversifiés | `https://uifaces.co` |
+| **Picsum Photos** | Images génériques (paysages, objets) | `https://picsum.photos/{w}/{h}` |
+
+**Règle** : dans Figma, importer l'image via upload dans la boîte image (`scaleMode: FILL`). Ne jamais laisser de fond bleu ou de texte initiales quand une photo est disponible.
+
+### Bonnes pratiques
+
+1. **Toujours utiliser une boîte image** — un `<div>` ou frame avec `overflow: hidden` + dimensions fixes. Ne jamais laisser une image se redimensionner librement.
+2. **Placeholder systématique** — tant que l'image n'est pas chargée, afficher le fond neutre + l'icône Tabler correspondante (`ti-user` pour avatar, `ti-photo` pour média).
+3. **Pas d'emoji** dans les placeholders — utiliser uniquement des icônes Tabler outline.
+4. **Clipper le contenu** — `clipsContent: true` dans Figma, `overflow: hidden` en CSS.
+5. **Jamais de fond bleu sur un avatar** sauf s'il s'agit d'initiales (état de fallback texte, pas image).
+
+---
+
+## 10. Règles de design
 
 1. **Clarté avant tout** — pas de gradients, pas d'ombres lourdes. Flat design avec des bordures fines (`0.5px`).
 2. **Le bleu est réservé aux actions** — `#0a66c2` uniquement pour les CTA, liens, et éléments interactifs.
@@ -214,7 +351,7 @@ Icônes clés LinkedIn :
 
 ---
 
-## 8. Tokens CSS (référence développeur)
+## 10. Tokens CSS (référence développeur)
 
 ```css
 :root {
