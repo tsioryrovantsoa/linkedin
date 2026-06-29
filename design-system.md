@@ -159,7 +159,31 @@ Structure : `Logo | Accueil | Réseau | Emplois | Messages | Notifications`
 
 ---
 
-## 6. Iconographie
+## 6. Logo & Branding
+
+**Ne jamais recréer le logo manuellement** — toujours utiliser les fichiers officiels des dossiers de branding.
+
+### Fichiers disponibles
+
+| Fichier | Dossier | Usage |
+| ------- | ------- | ----- |
+| `LI-In-Bug.png` | `in-logo/` | Logo "in" bleu — usage principal sur fond blanc ou clair |
+| `InBug-White.png` | `in-logo/` | Logo "in" blanc — sur fond coloré ou sombre |
+| `InBug-Black.png` | `in-logo/` | Logo "in" noir — usage monochrome |
+| `LI-Logo.png` | `linkedin-logo/` | Logotype complet "LinkedIn" — headers, splash screen |
+
+### Règles d'utilisation
+
+- **Écran de connexion / splash** : utiliser `LI-In-Bug.png` centré, taille `48×48px` minimum.
+- **Navigation principale** : utiliser `LI-In-Bug.png` à `28×28px` en haut à gauche.
+- **Sur fond sombre** (ex. bannière, overlay) : utiliser `InBug-White.png`.
+- **Impression / noir & blanc** : utiliser `InBug-Black.png`.
+- Ne jamais étirer, recolorer, ni reconstruire le logo avec des formes géométriques.
+- Zone de protection minimale : `8px` autour du logo sur tous les côtés.
+
+---
+
+## 7. Iconographie
 
 **Librairie** : Tabler Icons (outline uniquement)  
 **Taille standard** : 20px dans la nav, 16px inline  
