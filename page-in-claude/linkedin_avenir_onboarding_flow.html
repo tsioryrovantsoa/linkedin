@@ -1,0 +1,271 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{max-width:320px;margin:0 auto;font-family:var(--font-sans)}
+.phone{background:var(--surface-2);border-radius:24px;border:0.5px solid var(--border-strong);overflow:hidden}
+.topbar{background:#0077B5;padding:8px 16px 6px;display:flex;justify-content:space-between}
+.topbar span{color:#fff;font-size:11px}
+.header{background:#0077B5;padding:12px 16px 14px}
+.header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.header-title{color:#fff;font-size:15px;font-weight:500}
+.header-skip{color:rgba(255,255,255,0.7);font-size:12px;cursor:pointer}
+.step-dots{display:flex;gap:5px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.35);transition:all 0.2s}
+.dot.active{width:18px;border-radius:3px;background:#fff}
+.dot.done{background:rgba(255,255,255,0.7)}
+.progress-track{height:3px;background:rgba(255,255,255,0.25);border-radius:2px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:2px;transition:width 0.35s}
+.body{padding:16px;background:var(--surface-0);min-height:340px;display:flex;flex-direction:column}
+.step-num{font-size:11px;font-weight:500;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.q{font-size:16px;font-weight:500;color:var(--text-primary);margin-bottom:4px;line-height:1.3}
+.q-hint{font-size:12px;color:var(--text-secondary);margin-bottom:14px}
+.choices{display:flex;flex-direction:column;gap:8px;flex:1}
+.c{background:var(--surface-2);border:0.5px solid var(--border-strong);border-radius:var(--radius);padding:10px 12px;font-size:13px;color:var(--text-primary);cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color 0.15s,background 0.15s}
+.c:hover{border-color:#0077B5}
+.c.sel{border-color:#0077B5;background:#E8F4FD;color:#0C447C}
+.c.sel .c-check{opacity:1}
+.c-icon{width:28px;height:28px;border-radius:6px;background:var(--surface-1);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.c.sel .c-icon{background:#B5D4F4}
+.c-text{flex:1;font-size:13px}
+.c-check{width:16px;height:16px;border-radius:50%;background:#0077B5;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;transition:opacity 0.15s}
+.c-check i{font-size:10px;color:#fff}
+.multi-hint{font-size:11px;color:var(--text-muted);margin-bottom:10px}
+.footer{background:var(--surface-2);border-top:0.5px solid var(--border);padding:12px 16px;display:flex;gap:8px;align-items:center}
+.btn-back{width:36px;height:36px;border:0.5px solid var(--border-strong);border-radius:var(--radius);background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.btn-next{flex:1;height:36px;background:#0077B5;border:none;border-radius:var(--radius);color:#fff;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-next:disabled{background:#B5D4F4;cursor:default}
+.result-screen{padding:20px 16px;text-align:center;background:var(--surface-0);min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.result-icon{width:56px;height:56px;border-radius:50%;background:#E8F4FD;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.result-icon i{font-size:28px;color:#0077B5}
+.result-title{font-size:16px;font-weight:500;color:var(--text-primary);margin-bottom:6px}
+.result-sub{font-size:13px;color:var(--text-secondary);margin-bottom:20px;line-height:1.5}
+.metier-pill{display:inline-flex;align-items:center;gap:6px;background:#E8F4FD;border:0.5px solid #B5D4F4;border-radius:20px;padding:6px 12px;margin:4px;font-size:12px;color:#0C447C;font-weight:500}
+.pills-row{display:flex;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.btn-full{width:100%;height:40px;background:#0077B5;border:none;border-radius:var(--radius);color:#fff;font-size:14px;font-weight:500;cursor:pointer}
+</style>
+<h2 class="sr-only">Onboarding LinkedIn Avenir — questionnaire de 5 étapes pour personnaliser les recommandations métiers d'un lycéen</h2>
+
+<div class="wrap">
+<div id="step-view">
+<div class="phone">
+  <div class="topbar"><span>9:41</span><span>●●●</span></div>
+  <div class="header">
+    <div class="header-top">
+      <div class="header-title">LinkedIn Avenir</div>
+      <div class="header-skip" onclick="showResult()">Passer</div>
+    </div>
+    <div class="step-dots" id="dots"></div>
+    <div class="progress-track"><div class="progress-fill" id="prog" style="width:20%"></div></div>
+  </div>
+  <div class="body" id="body"></div>
+  <div class="footer">
+    <div class="btn-back" id="btn-back" onclick="prevStep()"><i class="ti ti-arrow-left" style="font-size:16px;color:var(--text-secondary)" aria-hidden="true"></i></div>
+    <button class="btn-next" id="btn-next" onclick="nextStep()"><span id="next-label">Continuer</span><i class="ti ti-arrow-right" style="font-size:14px" aria-hidden="true"></i></button>
+  </div>
+</div>
+</div>
+<div id="result-view" style="display:none">
+<div class="phone">
+  <div class="topbar"><span>9:41</span><span>●●●</span></div>
+  <div class="header" style="padding-bottom:12px">
+    <div class="header-title">Tes recommandations</div>
+    <div class="step-dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+  </div>
+  <div class="result-screen">
+    <div class="result-icon"><i class="ti ti-stars" aria-hidden="true"></i></div>
+    <div class="result-title">Voici tes 3 pistes</div>
+    <div class="result-sub">Basées sur tes centres d'intérêt, tes valeurs et ton profil.</div>
+    <div class="pills-row" id="result-pills"></div>
+    <button class="btn-full" onclick="sendPrompt('Je veux explorer les wireframes complets de LinkedIn Avenir, montre-moi l\'écran d\'accueil après l\'onboarding')">Explorer mes métiers</button>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:10px;cursor:pointer" onclick="resetFlow()">Recommencer le questionnaire</div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+const steps=[
+  {
+    num:"Étape 1 sur 5",
+    q:"Qui es-tu ?",
+    hint:"Pour personnaliser ton expérience.",
+    multi:false,
+    choices:[
+      {icon:"ti-school",label:"Lycéen en seconde"},
+      {icon:"ti-book",label:"Lycéen en première"},
+      {icon:"ti-certificate",label:"Lycéen en terminale"},
+      {icon:"ti-building",label:"Étudiant en post-bac (BTS, BUT…)"},
+    ]
+  },
+  {
+    num:"Étape 2 sur 5",
+    q:"Quelles matières t'intéressent le plus ?",
+    hint:"Tu peux en choisir plusieurs.",
+    multi:true,
+    choices:[
+      {icon:"ti-palette",label:"Arts et création"},
+      {icon:"ti-cpu",label:"Sciences et technologie"},
+      {icon:"ti-writing",label:"Lettres et communication"},
+      {icon:"ti-chart-bar",label:"Économie et gestion"},
+      {icon:"ti-dna",label:"SVT et santé"},
+      {icon:"ti-users",label:"Sciences humaines et sociales"},
+    ]
+  },
+  {
+    num:"Étape 3 sur 5",
+    q:"Qu'est-ce qui te motive dans un futur métier ?",
+    hint:"Choisis jusqu'à 3 valeurs importantes pour toi.",
+    multi:true,
+    choices:[
+      {icon:"ti-heart",label:"Aider et avoir de l'impact"},
+      {icon:"ti-bulb",label:"Créer et innover"},
+      {icon:"ti-coin",label:"Avoir un bon salaire"},
+      {icon:"ti-home",label:"Équilibre vie pro / perso"},
+      {icon:"ti-world",label:"Voyager ou travailler à l'international"},
+      {icon:"ti-users",label:"Travailler en équipe"},
+    ]
+  },
+  {
+    num:"Étape 4 sur 5",
+    q:"Comment tu te décrirais ?",
+    hint:"Une seule réponse — ce qui te ressemble le plus.",
+    multi:false,
+    choices:[
+      {icon:"ti-pencil",label:"Plutôt créatif(ve) et artistique"},
+      {icon:"ti-calculator",label:"Plutôt analytique et logique"},
+      {icon:"ti-microphone",label:"À l'aise à l'oral, j'aime convaincre"},
+      {icon:"ti-hand-finger",label:"Concret(ète), j'aime faire des choses"},
+      {icon:"ti-eye",label:"Curieux(se), j'aime comprendre comment ça marche"},
+    ]
+  },
+  {
+    num:"Étape 5 sur 5",
+    q:"Où en es-tu avec ton orientation ?",
+    hint:"Pour adapter le niveau d'accompagnement.",
+    multi:false,
+    choices:[
+      {icon:"ti-mood-confused",label:"Je n'ai aucune idée de ce que je veux faire"},
+      {icon:"ti-list",label:"J'ai quelques pistes mais je ne suis pas sûr(e)"},
+      {icon:"ti-target",label:"J'ai un ou deux métiers en tête"},
+      {icon:"ti-clock",label:"Parcoursup est bientôt, j'ai besoin d'aide vite"},
+    ]
+  }
+];
+
+const metierMap=[
+  ["UX Designer","Graphiste","Directrice artistique"],
+  ["Ingénieur logiciel","Data Analyst","Chef de projet digital"],
+  ["Journaliste","Community Manager","Chargée de communication"],
+  ["Contrôleur de gestion","Consultant","Chargée de marketing"],
+  ["Médecin","Infirmière","Chercheur en biologie"],
+  ["Psychologue","Éducateur","Assistant social"],
+];
+
+let cur=0;
+let sel={};
+
+function renderDots(){
+  const d=document.getElementById('dots');
+  d.innerHTML='';
+  for(let i=0;i<5;i++){
+    const dot=document.createElement('div');
+    dot.className='dot'+(i===cur?' active':i<cur?' done':'');
+    d.appendChild(dot);
+  }
+}
+
+function renderStep(){
+  const s=steps[cur];
+  if(!sel[cur]) sel[cur]=[];
+  document.getElementById('prog').style.width=((cur+1)/5*100)+'%';
+  renderDots();
+  document.getElementById('btn-back').style.opacity=cur===0?'0.35':'1';
+  document.getElementById('btn-back').style.pointerEvents=cur===0?'none':'auto';
+  const isLast=cur===4;
+  document.getElementById('next-label').textContent=isLast?'Voir mes résultats':'Continuer';
+
+  const body=document.getElementById('body');
+  body.innerHTML='';
+
+  const numEl=document.createElement('div');
+  numEl.className='step-num';
+  numEl.textContent=s.num;
+  body.appendChild(numEl);
+
+  const qEl=document.createElement('div');
+  qEl.className='q';
+  qEl.textContent=s.q;
+  body.appendChild(qEl);
+
+  const hintEl=document.createElement('div');
+  hintEl.className='q-hint';
+  hintEl.textContent=s.hint;
+  body.appendChild(hintEl);
+
+  const list=document.createElement('div');
+  list.className='choices';
+
+  s.choices.forEach((ch,i)=>{
+    const c=document.createElement('div');
+    c.className='c'+(sel[cur].includes(i)?' sel':'');
+    c.innerHTML=`<div class="c-icon"><i class="ti ${ch.icon}" aria-hidden="true"></i></div><div class="c-text">${ch.label}</div><div class="c-check"><i class="ti ti-check" aria-hidden="true"></i></div>`;
+    c.onclick=()=>toggle(i,s.multi,c);
+    list.appendChild(c);
+  });
+  body.appendChild(list);
+  updateBtn();
+}
+
+function toggle(i,multi,el){
+  if(!multi){
+    sel[cur]=[i];
+    document.querySelectorAll('.c').forEach(c=>c.classList.remove('sel'));
+    el.classList.add('sel');
+  } else {
+    const idx=sel[cur].indexOf(i);
+    if(idx>-1){sel[cur].splice(idx,1);el.classList.remove('sel');}
+    else{sel[cur].push(i);el.classList.add('sel');}
+  }
+  updateBtn();
+}
+
+function updateBtn(){
+  document.getElementById('btn-next').disabled=sel[cur].length===0;
+}
+
+function nextStep(){
+  if(cur<4){cur++;renderStep();}
+  else{showResult();}
+}
+
+function prevStep(){
+  if(cur>0){cur--;renderStep();}
+}
+
+function showResult(){
+  document.getElementById('step-view').style.display='none';
+  document.getElementById('result-view').style.display='block';
+  const picks=sel[1]||[];
+  const metiers=picks.length>0
+    ? metierMap[picks[0]]
+    : ["UX Designer","Graphiste","Directrice artistique"];
+  const pills=document.getElementById('result-pills');
+  pills.innerHTML='';
+  metiers.forEach(m=>{
+    const p=document.createElement('div');
+    p.className='metier-pill';
+    p.innerHTML=`<i class="ti ti-briefcase" style="font-size:12px" aria-hidden="true"></i>${m}`;
+    pills.appendChild(p);
+  });
+}
+
+function resetFlow(){
+  cur=0;sel={};
+  document.getElementById('step-view').style.display='block';
+  document.getElementById('result-view').style.display='none';
+  renderStep();
+}
+
+renderStep();
+</script>
