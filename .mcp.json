@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "TalkToFigma": {
+      "command": "/Users/tsiory/.bun/bin/bun",
+      "args": [
+        "x",
+        "cursor-talk-to-figma-mcp@latest"
+      ]
+    }
+  }
+}

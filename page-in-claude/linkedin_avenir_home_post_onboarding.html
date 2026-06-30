@@ -1,0 +1,112 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.phone{width:320px;margin:0 auto;background:var(--surface-2);border-radius:24px;border:0.5px solid var(--border-strong);overflow:hidden;font-family:var(--font-sans)}
+.status-bar{background:#0077B5;padding:8px 16px 6px;display:flex;justify-content:space-between;align-items:center}
+.status-bar span{color:#fff;font-size:11px}
+.nav-header{background:#0077B5;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.nav-header h1{color:#fff;font-size:15px;font-weight:500;flex:1}
+.nav-header .avatar{width:28px;height:28px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#0077B5;flex-shrink:0}
+.content{padding:16px;background:var(--surface-0);min-height:520px}
+.screen-tabs{display:flex;border-bottom:0.5px solid var(--border);background:var(--surface-2);padding:0 16px}
+.screen-tab{padding:10px 12px;font-size:13px;color:var(--text-muted);cursor:default;border-bottom:2px solid transparent;margin-bottom:-1px}
+.screen-tab.active{color:#0077B5;border-color:#0077B5}
+.section-label{font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;margin-top:18px}
+.section-label:first-child{margin-top:0}
+.card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+.card-title{font-size:14px;font-weight:500;color:var(--text-primary);margin-bottom:4px}
+.card-sub{font-size:12px;color:var(--text-secondary);margin-bottom:10px}
+.tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:var(--radius);background:var(--bg-accent);color:var(--text-accent);margin-right:4px;margin-bottom:4px}
+.tag.green{background:var(--bg-success);color:var(--text-success)}
+.progress-bar{height:4px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;background:#0077B5;border-radius:2px}
+.mentor-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.mentor-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;background:var(--bg-accent);color:var(--text-accent)}
+.mentor-info{flex:1;min-width:0}
+.mentor-name{font-size:13px;font-weight:500;color:var(--text-primary)}
+.mentor-role{font-size:11px;color:var(--text-secondary)}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:var(--radius);font-size:12px;font-weight:500;cursor:pointer;border:0.5px solid #0077B5;background:transparent;color:#0077B5;margin-top:8px}
+.badge-strip{display:flex;gap:6px;margin-bottom:4px}
+.badge-pill{display:flex;align-items:center;gap:4px;background:var(--bg-warning);border-radius:20px;padding:3px 8px;font-size:10px;color:var(--text-warning);font-weight:500}
+.bottom-nav{background:var(--surface-2);border-top:0.5px solid var(--border);display:flex;padding:8px 0 4px}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0}
+.bnav-item i{font-size:20px;color:var(--text-muted)}
+.bnav-item span{font-size:9px;color:var(--text-muted)}
+.bnav-item.active i,.bnav-item.active span{color:#0077B5}
+</style>
+<h2 class="sr-only">Écran d'accueil de LinkedIn Avenir juste après l'onboarding, montrant le compte à rebours Parcoursup, les métiers recommandés et un mentor suggéré</h2>
+
+<div class="phone">
+  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+  <div class="nav-header">
+    <h1>Bonjour Léa 👋</h1>
+    <div class="avatar">LM</div>
+  </div>
+  <div class="screen-tabs">
+    <div class="screen-tab active">Pour toi</div>
+    <div class="screen-tab">Explorer</div>
+    <div class="screen-tab">Parcours</div>
+  </div>
+  <div class="content">
+    <div class="card" style="border-left:3px solid #F59E0B;border-radius:0 12px 12px 0">
+      <div class="card-title"><i class="ti ti-clock" style="font-size:14px;vertical-align:-2px;margin-right:4px" aria-hidden="true"></i>Parcoursup dans 47 jours</div>
+      <div class="card-sub">Continue ton parcours orientation pour être prête</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
+      <p style="font-size:11px;color:var(--text-muted);margin-top:4px">3 étapes sur 10 complétées</p>
+    </div>
+
+    <div class="section-label">Tes 3 métiers recommandés</div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="card-title">UX Designer</div>
+          <div class="card-sub">Design · Numérique · Créatif</div>
+        </div>
+        <span class="tag">98% match</span>
+      </div>
+      <div><span class="tag green">Remote possible</span><span class="tag">Bac+3 min</span></div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="card-title">Directrice artistique</div>
+          <div class="card-sub">Art · Communication · Management</div>
+        </div>
+        <span class="tag">91% match</span>
+      </div>
+      <div><span class="tag">Bac+5</span></div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="card-title">Illustratrice freelance</div>
+          <div class="card-sub">Art · Création · Indépendance</div>
+        </div>
+        <span class="tag">87% match</span>
+      </div>
+      <div><span class="tag">Bac+3</span><span class="tag green">Freelance</span></div>
+    </div>
+
+    <div class="section-label">Mentor disponible pour toi</div>
+    <div class="mentor-card">
+      <div class="mentor-avatar">SM</div>
+      <div class="mentor-info">
+        <div class="mentor-name">Sophie Martin</div>
+        <div class="mentor-role">UX Designer · 5 ans · Paris</div>
+        <div class="btn-outline"><i class="ti ti-message" aria-hidden="true"></i> Contacter</div>
+      </div>
+    </div>
+
+    <div class="section-label">Tes badges récents</div>
+    <div class="badge-strip">
+      <div class="badge-pill"><i class="ti ti-star" style="font-size:12px" aria-hidden="true"></i> 1er métier exploré</div>
+      <div class="badge-pill"><i class="ti ti-user-check" style="font-size:12px" aria-hidden="true"></i> Profil créé</div>
+    </div>
+  </div>
+  <div class="bottom-nav">
+    <div class="bnav-item active"><i class="ti ti-home" aria-hidden="true"></i><span>Accueil</span></div>
+    <div class="bnav-item"><i class="ti ti-briefcase" aria-hidden="true"></i><span>Métiers</span></div>
+    <div class="bnav-item"><i class="ti ti-users" aria-hidden="true"></i><span>Mentors</span></div>
+    <div class="bnav-item"><i class="ti ti-user" aria-hidden="true"></i><span>Profil</span></div>
+  </div>
+</div>
