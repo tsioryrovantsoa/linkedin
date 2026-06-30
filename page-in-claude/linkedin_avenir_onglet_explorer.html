@@ -1,0 +1,132 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.phone{width:320px;margin:0 auto;background:var(--surface-2);border-radius:24px;border:0.5px solid var(--border-strong);overflow:hidden;font-family:var(--font-sans)}
+.status-bar{background:#0077B5;padding:8px 16px 6px;display:flex;justify-content:space-between;align-items:center}
+.status-bar span{color:#fff;font-size:11px}
+.nav-header{background:#0077B5;padding:10px 16px 12px}
+.nav-header h1{color:#fff;font-size:15px;font-weight:500;margin-bottom:10px}
+.search-bar{background:rgba(255,255,255,0.15);border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px}
+.search-bar i{color:rgba(255,255,255,0.8);font-size:14px}
+.search-bar span{color:rgba(255,255,255,0.8);font-size:13px}
+.screen-tabs{display:flex;border-bottom:0.5px solid var(--border);background:var(--surface-2);padding:0 16px}
+.screen-tab{padding:10px 12px;font-size:13px;color:var(--text-muted);cursor:default;border-bottom:2px solid transparent;margin-bottom:-1px}
+.screen-tab.active{color:#0077B5;border-color:#0077B5}
+.content{padding:14px 16px;background:var(--surface-0)}
+.filters-row{display:flex;gap:7px;overflow-x:auto;margin-bottom:14px;padding-bottom:2px}
+.filter-chip{flex-shrink:0;font-size:11px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border-strong);background:var(--surface-2);color:var(--text-secondary);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.filter-chip.active{background:#0077B5;border-color:#0077B5;color:#fff}
+.filter-chip i{font-size:11px}
+.section-label{font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;margin-top:16px;display:flex;justify-content:space-between;align-items:center}
+.section-label:first-child{margin-top:0}
+.section-label .see-all{font-size:11px;color:#0077B5;text-transform:none;letter-spacing:0;font-weight:400}
+.domain-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.domain-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.domain-icon{width:30px;height:30px;border-radius:8px;background:var(--bg-accent);display:flex;align-items:center;justify-content:center}
+.domain-icon i{font-size:15px;color:var(--text-accent)}
+.domain-title{font-size:12px;font-weight:500;color:var(--text-primary)}
+.domain-count{font-size:10px;color:var(--text-muted)}
+.metier-row{display:flex;gap:10px;align-items:center;background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:11px;margin-bottom:8px}
+.metier-icon{width:36px;height:36px;border-radius:8px;background:var(--bg-accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.metier-icon i{font-size:16px;color:var(--text-accent)}
+.metier-info{flex:1;min-width:0}
+.metier-title{font-size:13px;font-weight:500;color:var(--text-primary)}
+.metier-sub{font-size:11px;color:var(--text-secondary)}
+.metier-match{font-size:10px;font-weight:500;color:#0077B5;background:#E8F4FD;padding:2px 7px;border-radius:10px;flex-shrink:0}
+.compare-banner{background:#E8F4FD;border:0.5px solid #B5D4F4;border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px;margin-top:14px}
+.compare-banner i{font-size:18px;color:#0C447C;flex-shrink:0}
+.compare-text{font-size:11px;color:#0C447C;line-height:1.4;flex:1}
+.lock-mini{font-size:9px;background:var(--bg-pro);color:var(--text-pro);padding:2px 6px;border-radius:8px;margin-left:4px}
+.bottom-nav{background:var(--surface-2);border-top:0.5px solid var(--border);display:flex;padding:8px 0 4px}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0}
+.bnav-item i{font-size:20px;color:var(--text-muted)}
+.bnav-item span{font-size:9px;color:var(--text-muted)}
+.bnav-item.active i,.bnav-item.active span{color:#0077B5}
+</style>
+<h2 class="sr-only">Onglet Explorer de LinkedIn Avenir permettant de rechercher et filtrer des métiers par secteur, niveau d'études et compatibilité</h2>
+
+<div class="phone">
+  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+  <div class="nav-header">
+    <h1>Explorer les métiers</h1>
+    <div class="search-bar">
+      <i class="ti ti-search" aria-hidden="true"></i>
+      <span>Rechercher un métier, un secteur...</span>
+    </div>
+  </div>
+  <div class="screen-tabs">
+    <div class="screen-tab">Pour toi</div>
+    <div class="screen-tab active">Explorer</div>
+    <div class="screen-tab">Parcours</div>
+  </div>
+  <div class="content">
+    <div class="filters-row">
+      <div class="filter-chip active"><i class="ti ti-adjustments" aria-hidden="true"></i> Filtres</div>
+      <div class="filter-chip">Niveau d'études</div>
+      <div class="filter-chip">Salaire</div>
+      <div class="filter-chip">Remote</div>
+      <div class="filter-chip">Secteur</div>
+    </div>
+
+    <div class="section-label">Domaines populaires<span class="see-all">Voir tout</span></div>
+    <div class="domain-grid">
+      <div class="domain-card">
+        <div class="domain-icon"><i class="ti ti-palette" aria-hidden="true"></i></div>
+        <div class="domain-title">Design & créa</div>
+        <div class="domain-count">42 métiers</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon"><i class="ti ti-cpu" aria-hidden="true"></i></div>
+        <div class="domain-title">Tech & digital</div>
+        <div class="domain-count">68 métiers</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon"><i class="ti ti-dna" aria-hidden="true"></i></div>
+        <div class="domain-title">Santé</div>
+        <div class="domain-count">35 métiers</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+        <div class="domain-title">Business</div>
+        <div class="domain-count">51 métiers</div>
+      </div>
+    </div>
+
+    <div class="section-label">Basé sur tes recherches<span class="see-all">Voir tout</span></div>
+    <div class="metier-row">
+      <div class="metier-icon"><i class="ti ti-pencil" aria-hidden="true"></i></div>
+      <div class="metier-info">
+        <div class="metier-title">Graphiste</div>
+        <div class="metier-sub">Design · Bac+3 · 36k€</div>
+      </div>
+      <div class="metier-match">94%</div>
+    </div>
+    <div class="metier-row">
+      <div class="metier-icon"><i class="ti ti-device-tv" aria-hidden="true"></i></div>
+      <div class="metier-info">
+        <div class="metier-title">Motion designer</div>
+        <div class="metier-sub">Design · Bac+3 · 38k€</div>
+      </div>
+      <div class="metier-match">89%</div>
+    </div>
+    <div class="metier-row">
+      <div class="metier-icon"><i class="ti ti-camera" aria-hidden="true"></i></div>
+      <div class="metier-info">
+        <div class="metier-title">Photographe</div>
+        <div class="metier-sub">Création · Bac+2 · 28k€</div>
+      </div>
+      <div class="metier-match">82%</div>
+    </div>
+
+    <div class="compare-banner">
+      <i class="ti ti-arrows-left-right" aria-hidden="true"></i>
+      <div class="compare-text">Compare 2 métiers côte à côte pour t'aider à choisir<span class="lock-mini">Premium</span></div>
+    </div>
+  </div>
+  <div class="bottom-nav">
+    <div class="bnav-item"><i class="ti ti-home" aria-hidden="true"></i><span>Accueil</span></div>
+    <div class="bnav-item active"><i class="ti ti-briefcase" aria-hidden="true"></i><span>Métiers</span></div>
+    <div class="bnav-item"><i class="ti ti-users" aria-hidden="true"></i><span>Mentors</span></div>
+    <div class="bnav-item"><i class="ti ti-user" aria-hidden="true"></i><span>Profil</span></div>
+  </div>
+</div>

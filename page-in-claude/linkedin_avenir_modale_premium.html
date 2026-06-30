@@ -1,0 +1,79 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.faux-viewport{min-height:560px;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;border-radius:16px;padding:20px}
+.modal{width:300px;background:var(--surface-2);border-radius:16px;overflow:hidden;font-family:var(--font-sans)}
+.modal-header{background:#0077B5;padding:16px;text-align:center;position:relative}
+.modal-close{position:absolute;top:10px;right:10px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center}
+.modal-close i{font-size:13px;color:#fff}
+.modal-icon{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.modal-icon i{font-size:22px;color:#fff}
+.modal-title{color:#fff;font-size:16px;font-weight:500;margin-bottom:4px}
+.modal-sub{color:rgba(255,255,255,0.85);font-size:12px}
+.modal-body{padding:16px}
+.urgency-card{background:var(--bg-warning);border:0.5px solid var(--border-warning);border-radius:var(--radius);padding:10px 12px;display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.urgency-card i{font-size:16px;color:var(--text-warning);flex-shrink:0}
+.urgency-text{font-size:12px;color:var(--text-warning);line-height:1.4}
+.mentor-blocked{display:flex;gap:10px;align-items:center;background:var(--surface-1);border-radius:var(--radius);padding:10px;margin-bottom:16px}
+.mentor-avatar{width:36px;height:36px;border-radius:50%;background:var(--bg-accent);color:var(--text-accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.mentor-name{font-size:13px;font-weight:500;color:var(--text-primary)}
+.mentor-role{font-size:11px;color:var(--text-secondary)}
+.lock-icon{margin-left:auto;width:24px;height:24px;border-radius:50%;background:var(--bg-pro);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lock-icon i{font-size:12px;color:var(--text-pro)}
+.benefits{margin-bottom:16px}
+.benefit-row{display:flex;align-items:center;gap:8px;padding:6px 0}
+.benefit-row i{font-size:15px;color:var(--text-success);flex-shrink:0}
+.benefit-text{font-size:12px;color:var(--text-primary)}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:14px}
+.price-amount{font-size:26px;font-weight:500;color:var(--text-primary)}
+.price-period{font-size:13px;color:var(--text-secondary)}
+.price-note{text-align:center;font-size:11px;color:var(--text-muted);margin-bottom:16px}
+.btn-cta{width:100%;height:42px;background:#0077B5;border:none;border-radius:var(--radius);color:#fff;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:8px}
+.btn-secondary{width:100%;height:36px;background:transparent;border:none;color:var(--text-secondary);font-size:12px;cursor:pointer;text-decoration:underline}
+.quota-pill{display:inline-flex;align-items:center;gap:4px;background:var(--bg-danger);color:var(--text-danger);font-size:11px;font-weight:500;padding:3px 8px;border-radius:20px;margin-bottom:10px}
+</style>
+<h2 class="sr-only">Modale de conversion Premium affichée quand un lycéen tente de contacter un mentor au-delà de son quota gratuit, avec urgence Parcoursup et avantages Premium</h2>
+
+<div class="faux-viewport">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-close"><i class="ti ti-x" aria-hidden="true"></i></div>
+    <div class="modal-icon"><i class="ti ti-lock" aria-hidden="true"></i></div>
+    <div class="modal-title">Quota mentors atteint</div>
+    <div class="modal-sub">3 contacts utilisés ce mois-ci</div>
+  </div>
+  <div class="modal-body">
+    <div class="urgency-card">
+      <i class="ti ti-clock" aria-hidden="true"></i>
+      <div class="urgency-text">Parcoursup dans <strong style="color:var(--text-warning)">47 jours</strong> — chaque mentor compte.</div>
+    </div>
+
+    <div class="quota-pill"><i class="ti ti-alert-circle" style="font-size:12px" aria-hidden="true"></i> 0 contact restant</div>
+
+    <div class="mentor-blocked">
+      <div class="mentor-avatar">SM</div>
+      <div style="flex:1">
+        <div class="mentor-name">Sophie Martin</div>
+        <div class="mentor-role">UX Designer · Spotify</div>
+      </div>
+      <div class="lock-icon"><i class="ti ti-lock" aria-hidden="true"></i></div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Mentors illimités, sans quota</div></div>
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Accès aux experts 10+ ans d'expérience</div></div>
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Appels vidéo avec tes mentors</div></div>
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Témoignages métiers illimités</div></div>
+    </div>
+
+    <div class="price-row">
+      <span class="price-amount">9,99€</span>
+      <span class="price-period">/ mois</span>
+    </div>
+    <div class="price-note">Annulable à tout moment · Idéal à partager avec tes parents</div>
+
+    <button class="btn-cta" onclick="sendPrompt('Montre-moi le parcours de paiement Premium après le clic sur Passer Premium, avec une étape pour demander à un parent de valider')">Passer Premium</button>
+    <button class="btn-secondary">Plus tard, revenir aux mentors gratuits</button>
+  </div>
+</div>
+</div>

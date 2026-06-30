@@ -1,0 +1,157 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.phone{width:320px;margin:0 auto;background:var(--surface-2);border-radius:24px;border:0.5px solid var(--border-strong);overflow:hidden;font-family:var(--font-sans)}
+.screen{display:none;flex-direction:column;min-height:560px}
+.screen.active{display:flex}
+.status-bar{background:#0077B5;padding:8px 16px 6px;display:flex;justify-content:space-between;align-items:center}
+.status-bar span{color:#fff;font-size:11px}
+.nav-header{background:#0077B5;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.nav-header .back{color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center}
+.nav-header h1{color:#fff;font-size:15px;font-weight:500;flex:1}
+.content{flex:1;padding:16px;background:var(--surface-0)}
+.section-label{font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;margin-top:16px}
+.section-label:first-child{margin-top:0}
+.plan-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+.price-big{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.price-big .amt{font-size:26px;font-weight:500;color:var(--text-primary)}
+.price-big .per{font-size:13px;color:var(--text-secondary)}
+.benefit-row{display:flex;align-items:center;gap:8px;padding:5px 0}
+.benefit-row i{font-size:14px;color:var(--text-success);flex-shrink:0}
+.benefit-text{font-size:12px;color:var(--text-primary)}
+.choice-card{background:var(--surface-2);border:0.5px solid var(--border-strong);border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer;display:flex;gap:12px;align-items:flex-start}
+.choice-card.featured{border:2px solid var(--border-accent)}
+.choice-icon{width:36px;height:36px;border-radius:50%;background:var(--bg-accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.choice-icon i{font-size:17px;color:var(--text-accent)}
+.choice-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:2px}
+.choice-sub{font-size:11px;color:var(--text-secondary);line-height:1.4}
+.badge-mini{display:inline-block;background:var(--bg-accent);color:var(--text-accent);font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;margin-bottom:6px}
+.parent-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px}
+.qr-box{width:100%;height:120px;background:var(--surface-1);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.qr-box i{font-size:48px;color:var(--text-muted)}
+.input-field{width:100%;height:36px;border:0.5px solid var(--border-strong);border-radius:var(--radius);padding:0 10px;font-size:13px;color:var(--text-primary);background:var(--surface-2);margin-bottom:10px}
+.btn-cta{width:100%;height:42px;background:#0077B5;border:none;border-radius:var(--radius);color:#fff;font-size:14px;font-weight:500;cursor:pointer;margin-top:6px}
+.btn-link{width:100%;text-align:center;font-size:12px;color:var(--text-secondary);text-decoration:underline;cursor:pointer;margin-top:10px}
+.status-pending{display:flex;align-items:center;gap:8px;background:var(--bg-warning);border-radius:var(--radius);padding:10px 12px;margin-bottom:12px}
+.status-pending i{color:var(--text-warning);font-size:16px}
+.status-pending span{font-size:12px;color:var(--text-warning)}
+.success-icon{width:64px;height:64px;border-radius:50%;background:var(--bg-success);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.success-icon i{font-size:30px;color:var(--text-success)}
+.steps-nav{display:flex;gap:6px;justify-content:center;padding:12px 16px 0;flex-wrap:wrap}
+.snav-btn{font-size:10px;padding:4px 8px;border:0.5px solid var(--border-strong);border-radius:var(--radius);background:var(--surface-2);color:var(--text-secondary);cursor:pointer}
+.snav-btn.active{background:#0077B5;border-color:#0077B5;color:#fff}
+</style>
+<h2 class="sr-only">Parcours de paiement Premium LinkedIn Avenir en 4 écrans, avec option de demander la validation d'un parent par lien ou QR code</h2>
+
+<div class="steps-nav" id="snav">
+  <button class="snav-btn active" onclick="showScreen('recap')">1. Récap offre</button>
+  <button class="snav-btn" onclick="showScreen('choix')">2. Qui paie</button>
+  <button class="snav-btn" onclick="showScreen('parent')">3. Demande parent</button>
+  <button class="snav-btn" onclick="showScreen('confirm')">4. Confirmation</button>
+</div>
+
+<div class="phone" style="margin-top:12px">
+
+<div class="screen active" id="screen-recap">
+  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+  <div class="nav-header">
+    <span class="back" onclick="showScreen('mentors')"><i class="ti ti-arrow-left" aria-hidden="true"></i></span>
+    <h1>Passer Premium</h1>
+  </div>
+  <div class="content">
+    <div class="plan-card" style="border:2px solid var(--border-accent)">
+      <div class="badge-mini">Recommandé pour toi</div>
+      <div class="price-big"><span class="amt">9,99€</span><span class="per">/ mois</span></div>
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">Annulable à tout moment</div>
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Mentors illimités, sans quota</div></div>
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Accès aux experts 10+ ans d'expérience</div></div>
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Appels vidéo avec tes mentors</div></div>
+      <div class="benefit-row"><i class="ti ti-check" aria-hidden="true"></i><div class="benefit-text">Témoignages métiers illimités</div></div>
+    </div>
+    <div class="section-label">Pourquoi maintenant</div>
+    <div style="background:var(--bg-warning);border-radius:var(--radius);padding:10px 12px;display:flex;gap:8px;align-items:center">
+      <i class="ti ti-clock" style="font-size:16px;color:var(--text-warning)" aria-hidden="true"></i>
+      <div style="font-size:12px;color:var(--text-warning)">Parcoursup dans 47 jours — le bon moment pour avancer</div>
+    </div>
+  </div>
+  <div style="padding:16px;background:var(--surface-2);border-top:0.5px solid var(--border)">
+    <button class="btn-cta" onclick="showScreen('choix')">Continuer</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-choix">
+  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+  <div class="nav-header">
+    <span class="back" onclick="showScreen('recap')"><i class="ti ti-arrow-left" aria-hidden="true"></i></span>
+    <h1>Qui règle l'abonnement ?</h1>
+  </div>
+  <div class="content">
+    <p style="font-size:12px;color:var(--text-secondary);margin-bottom:14px">9,99€/mois, c'est aussi un budget que beaucoup de parents acceptent facilement pour l'orientation.</p>
+    <div class="choice-card featured" onclick="showScreen('parent')">
+      <div class="choice-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+      <div>
+        <div class="badge-mini">Le plus simple</div>
+        <div class="choice-title">Demander à un parent</div>
+        <div class="choice-sub">Envoie une demande, ils paient depuis leur téléphone en 1 minute</div>
+      </div>
+    </div>
+    <div class="choice-card" onclick="sendPrompt('Montre-moi l\'écran de paiement direct par carte bancaire pour LinkedIn Avenir Premium')">
+      <div class="choice-icon"><i class="ti ti-credit-card" aria-hidden="true"></i></div>
+      <div>
+        <div class="choice-title">Payer moi-même</div>
+        <div class="choice-sub">Carte bancaire ou compte déjà sur ton téléphone</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="screen-parent">
+  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+  <div class="nav-header">
+    <span class="back" onclick="showScreen('choix')"><i class="ti ti-arrow-left" aria-hidden="true"></i></span>
+    <h1>Demander à un parent</h1>
+  </div>
+  <div class="content">
+    <div class="parent-card">
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:10px">Comment envoyer la demande ?</div>
+      <input class="input-field" placeholder="Prénom du parent (ex. Maman)" />
+      <input class="input-field" placeholder="Numéro de téléphone" />
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Un message leur explique LinkedIn Avenir et le prix, avec un lien sécurisé de paiement.</div>
+    </div>
+    <div class="section-label">Ou montre-leur ce QR code</div>
+    <div class="qr-box"><i class="ti ti-qrcode" aria-hidden="true"></i></div>
+    <button class="btn-cta" onclick="showScreen('confirm')">Envoyer la demande</button>
+    <div class="btn-link">Annuler et revenir en arrière</div>
+  </div>
+</div>
+
+<div class="screen" id="screen-confirm">
+  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+  <div class="nav-header">
+    <h1>Demande envoyée</h1>
+  </div>
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:30px">
+    <div class="status-pending" style="width:100%">
+      <i class="ti ti-hourglass" aria-hidden="true"></i>
+      <span>En attente de validation par Maman</span>
+    </div>
+    <div class="success-icon"><i class="ti ti-send" aria-hidden="true"></i></div>
+    <div style="font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:6px">Demande envoyée par SMS</div>
+    <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:20px;max-width:240px">Dès que Maman valide le paiement, ton compte passe automatiquement en Premium. Tu reçois une notification.</div>
+    <button class="btn-cta" style="background:transparent;border:0.5px solid var(--border-strong);color:var(--text-primary)" onclick="sendPrompt('Montre-moi l\'écran accueil avec mon compte Premium activé après validation du parent')">Revenir à l'app en attendant</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showScreen(id){
+  if(id==='mentors'){return;}
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+  document.querySelectorAll('.snav-btn').forEach((b,i)=>{
+    const ids=['recap','choix','parent','confirm'];
+    b.classList.toggle('active', ids[i]===id);
+  });
+}
+</script>

@@ -1,0 +1,81 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.phone{width:320px;margin:0 auto;background:var(--surface-2);border-radius:24px;border:0.5px solid var(--border-strong);overflow:hidden;font-family:var(--font-sans)}
+.status-bar{background:#0077B5;padding:8px 16px 6px;display:flex;justify-content:space-between;align-items:center}
+.status-bar span{color:#fff;font-size:11px}
+.nav-header{background:#0077B5;padding:10px 16px;display:flex;align-items:center}
+.nav-header h1{color:#fff;font-size:15px;font-weight:500;flex:1}
+.content{padding:16px;background:var(--surface-0);max-height:520px;overflow-y:auto}
+.profile-header{text-align:center;padding:8px 0 14px;border-bottom:0.5px solid var(--border);margin-bottom:14px}
+.profile-avatar{width:56px;height:56px;border-radius:50%;background:#0077B5;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:500;color:#fff;margin:0 auto 8px}
+.profile-name{font-size:15px;font-weight:500;color:var(--text-primary)}
+.profile-sub{font-size:12px;color:var(--text-secondary);margin-top:2px}
+.tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:var(--radius);background:var(--bg-accent);color:var(--text-accent);margin-right:4px;margin-top:6px}
+.tag.green{background:var(--bg-success);color:var(--text-success)}
+.stat-row{display:flex;gap:8px;margin-bottom:14px}
+.stat{flex:1;background:var(--surface-2);border:0.5px solid var(--border);border-radius:var(--radius);padding:8px;text-align:center}
+.stat-n{font-size:18px;font-weight:500;color:#0077B5}
+.stat-l{font-size:10px;color:var(--text-muted);margin-top:2px}
+.section-label{font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;margin-top:18px}
+.section-label:first-child{margin-top:0}
+.card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px}
+.card-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:2px}
+.card-sub{font-size:11px;color:var(--text-secondary)}
+.btn-outline{width:100%;height:36px;background:transparent;border:0.5px solid #0077B5;border-radius:var(--radius);color:#0077B5;font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px}
+.badge-row{display:flex;gap:8px;margin-bottom:6px}
+.badge-item{flex:1;background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.badge-icon{font-size:22px;color:var(--text-muted)}
+.badge-icon.earned{color:#F59E0B}
+.badge-label{font-size:9px;color:var(--text-secondary);text-align:center}
+.bottom-nav{background:var(--surface-2);border-top:0.5px solid var(--border);display:flex;padding:8px 0 4px}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0}
+.bnav-item i{font-size:20px;color:var(--text-muted)}
+.bnav-item span{font-size:9px;color:var(--text-muted)}
+.bnav-item.active i,.bnav-item.active span{color:#0077B5}
+</style>
+<h2 class="sr-only">Profil lycéen de Léa Martin dans LinkedIn Avenir, valorisant ses expériences scolaires et associatives</h2>
+
+<div class="phone">
+  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+  <div class="nav-header"><h1>Mon profil</h1></div>
+  <div class="content">
+    <div class="profile-header">
+      <div class="profile-avatar">LM</div>
+      <div class="profile-name">Léa Martin</div>
+      <div class="profile-sub">Terminale · Lycée Victor Hugo, Paris</div>
+      <div><span class="tag">Arts plastiques</span><span class="tag">SES</span></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">métiers explorés</div></div>
+      <div class="stat"><div class="stat-n">1</div><div class="stat-l">mentor contacté</div></div>
+      <div class="stat"><div class="stat-n">30%</div><div class="stat-l">profil complété</div></div>
+    </div>
+
+    <div class="section-label">Expériences & projets</div>
+    <div class="card">
+      <div class="card-title">Bénévolat · Resto du Cœur</div>
+      <div class="card-sub">Sep 2023 – Aujourd'hui · 3h/semaine</div>
+      <div><span class="tag green">Association</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Projet scolaire · Affiche expo</div>
+      <div class="card-sub">Arts plastiques · 2024 · Prix du jury</div>
+      <div><span class="tag">Portfolio</span><span class="tag">Design</span></div>
+    </div>
+    <button class="btn-outline"><i class="ti ti-plus" aria-hidden="true"></i> Ajouter une expérience</button>
+
+    <div class="section-label">Badges obtenus</div>
+    <div class="badge-row">
+      <div class="badge-item"><i class="ti ti-star badge-icon earned" aria-hidden="true"></i><div class="badge-label">1er métier exploré</div></div>
+      <div class="badge-item"><i class="ti ti-user-check badge-icon earned" aria-hidden="true"></i><div class="badge-label">Profil créé</div></div>
+      <div class="badge-item"><i class="ti ti-message-circle badge-icon" aria-hidden="true"></i><div class="badge-label">1er mentor</div></div>
+    </div>
+  </div>
+  <div class="bottom-nav">
+    <div class="bnav-item"><i class="ti ti-home" aria-hidden="true"></i><span>Accueil</span></div>
+    <div class="bnav-item"><i class="ti ti-briefcase" aria-hidden="true"></i><span>Métiers</span></div>
+    <div class="bnav-item"><i class="ti ti-users" aria-hidden="true"></i><span>Mentors</span></div>
+    <div class="bnav-item active"><i class="ti ti-user" aria-hidden="true"></i><span>Profil</span></div>
+  </div>
+</div>
